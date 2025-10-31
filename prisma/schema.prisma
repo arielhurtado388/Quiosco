@@ -16,10 +16,29 @@ model Categoria {
 }
 
 model Producto {
-  id          Int       @id @default(autoincrement())
+  id          Int              @id @default(autoincrement())
   nombre      String
   precio      Float
   imagen      String
   idCategoria Int
-  categoria   Categoria @relation(fields: [idCategoria], references: [id])
+  categoria   Categoria        @relation(fields: [idCategoria], references: [id])
+  itemsOrden  ProductosOrden[]
+}
+
+model Orden {
+  id             Int              @id @default(autoincrement())
+  nombre         String
+  total          Float
+  fecha          DateTime         @default(now())
+  estado         Boolean          @default(false)
+  ordenListaAt   DateTime?
+  productosOrden ProductosOrden[]
+}
+
+model ProductosOrden {
+  id         Int      @id @default(autoincrement())
+  idOrden    Int
+  orden      Orden    @relation(fields: [idOrden], references: [id])
+  idProducto Int
+  producto   Producto @relation(fields: [idProducto], references: [id])
 }
