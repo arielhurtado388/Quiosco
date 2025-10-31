@@ -1,5 +1,6 @@
 import OrdenResumen from "@/components/orden/OrdenResumen";
 import OrdenSidebar from "@/components/orden/OrdenSidebar";
+import ToastNotificacion from "@/components/ui/ToastNotificacion";
 
 export default function RootLayout({
   children,
@@ -15,6 +16,8 @@ export default function RootLayout({
         </main>
         <OrdenResumen />
       </div>
+
+      <ToastNotificacion />
     </>
   );
 }

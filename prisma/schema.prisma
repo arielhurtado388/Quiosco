@@ -41,4 +41,5 @@ model ProductosOrden {
   orden      Orden    @relation(fields: [idOrden], references: [id])
   idProducto Int
   producto   Producto @relation(fields: [idProducto], references: [id])
+  cantidad   Int
 }
