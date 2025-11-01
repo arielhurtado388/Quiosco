@@ -13,3 +13,10 @@ export const OrdenSchema = z.object({
     })
   ),
 });
+
+export const OrdenIdSchema = z.object({
+  idOrden: z
+    .string()
+    .transform((value) => parseInt(value))
+    .refine((value) => value > 0, { message: "Hay errores" }),
+});
