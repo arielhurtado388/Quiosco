@@ -20,3 +20,10 @@ export const OrdenIdSchema = z.object({
     .transform((value) => parseInt(value))
     .refine((value) => value > 0, { message: "Hay errores" }),
 });
+
+export const BuscadorSchema = z.object({
+  buscador: z
+    .string()
+    .trim()
+    .min(1, { message: "La búsqueda no puede ir vacía" }),
+});
