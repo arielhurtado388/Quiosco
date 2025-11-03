@@ -1,0 +1,18 @@
+import { prisma } from "@/src/lib/prisma";
+
+export async function GET() {
+  const ordenes = await prisma.orden.findMany({
+    where: {
+      estado: false,
+    },
+    include: {
+      productosOrden: {
+        include: {
+          producto: true,
+        },
+      },
+    },
+  });
+
+  return Response.json(ordenes);
+}

@@ -1,12 +1,13 @@
 "use client";
 
-import useSWR from "swr";
 import OrdenCard from "@/components/orden/OrdenCard";
-import Heading from "@/components/ui/Heading";
+import UltimoItemOrden from "@/components/orden/UltimoItemOrden";
+import Logo from "@/components/ui/Logo";
 import { OrdenConProductos } from "@/src/types";
+import useSWR from "swr";
 
 export default function OrdenesPage() {
-  const url = "/admin/ordenes/api";
+  const url = "/ordenes/api";
   const fetcher = () =>
     fetch(url)
       .then((res) => res.json())
@@ -22,16 +23,20 @@ export default function OrdenesPage() {
   if (data)
     return (
       <>
-        <Heading>Administrar órdenes</Heading>
+        <h1 className="text-center mt-20 text-3xl font-black">
+          Ordenes listas
+        </h1>
+
+        <Logo />
 
         {data.length ? (
-          <div className="grid grid-cols-1 lg:grid-cols-2 2xl:grid-cols-3 gap-5 mt-5">
+          <div className="grid grid-cols-2 gap-5 max-w-5xl mx-auto my-10">
             {data.map((orden) => (
-              <OrdenCard key={orden.id} orden={orden} />
+              <UltimoItemOrden key={orden.id} orden={orden} />
             ))}
           </div>
         ) : (
-          <p className="text-center">No hay órdenes aquí</p>
+          <p className="text-center my-10">No hay órdenes listas</p>
         )}
       </>
     );
