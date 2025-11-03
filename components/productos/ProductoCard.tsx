@@ -1,5 +1,5 @@
 import { Producto } from "@/app/generated/prisma/client";
-import { formatearDinero } from "@/src/utils";
+import { formatearDinero, obtenerPathImagen } from "@/src/utils";
 import Image from "next/image";
 import AgregarProductoButton from "./AgregarProductoButton";
 
@@ -8,12 +8,13 @@ type ProductoCardProps = {
 };
 
 export default function ProductoCard({ producto }: ProductoCardProps) {
+  const imagenPath = obtenerPathImagen(producto.imagen);
   return (
     <div className="border bg-white">
       <Image
         width={400}
         height={500}
-        src={`/productos/${producto.imagen}.jpg`}
+        src={imagenPath}
         alt={`Imagen plato ${producto.nombre}`}
       />
 
