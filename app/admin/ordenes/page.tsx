@@ -12,7 +12,7 @@ export default function OrdenesPage() {
       .then((res) => res.json())
       .then((data) => data);
 
-  const { data, error, isLoading } = useSWR<OrdenConProductos[]>(url, fetcher, {
+  const { data, isLoading } = useSWR<OrdenConProductos[]>(url, fetcher, {
     refreshInterval: 60000,
     revalidateOnFocus: false,
   });

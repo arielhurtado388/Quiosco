@@ -1,7 +1,7 @@
 "use client";
 
 import { BuscadorSchema } from "@/src/schema";
-import { redirect, useRouter } from "next/navigation";
+import { useRouter } from "next/navigation";
 import { toast } from "react-toastify";
 
 export default function BuscadorProducto() {

@@ -2,7 +2,6 @@
 
 import { Producto } from "@/app/generated/prisma/client";
 import { useStore } from "@/src/store";
-import { useMemo } from "react";
 
 type AgregarProductoButtonProps = {
   producto: Producto;

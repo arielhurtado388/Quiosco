@@ -18,7 +18,7 @@ export default function ImagenesUpload({
       onSuccess={(resultado, { widget }) => {
         if (resultado.event == "success") {
           widget.close();
-          // @ts-ignore
+          // @ts-expect-error Porque no se han agregado los tipos en la respuesta
           setImagenUrl(resultado.info.secure_url);
         }
       }}

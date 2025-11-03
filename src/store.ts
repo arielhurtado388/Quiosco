@@ -14,8 +14,7 @@ interface Store {
 export const useStore = create<Store>((set, get) => ({
   orden: [],
   agregarAOrden: (producto) => {
-    const { idCategoria, imagen, ...data } = producto;
-
+    const { ...data } = producto;
     let orden: ItemOrden[] = [];
 
     const existeItem = get().orden.find((item) => item.id === producto.id);
